@@ -43,10 +43,11 @@ cp *.yaml ~/Library/Rime # Mac OS
 cp *.yaml %APPDATA%\Rime # Windows
 ```
 
-## Copyrights / Licensing
+## Copyrights
 
 **出于方便起见，文件名使用正则表达式匹配来表示**
 
+引用的外部文件：
 - `luna_pinyin(_simp)?.custom.yaml`: [【朙月拼音】模糊音定製模板](https://gist.github.com/2320943) ©️ 佛振
   - 有改动，针对我自己的情况做了调整
 - `luna_pinyin(_simp)?.custom.yaml|opencc/symbol_((category|word).txt|.json)`: [rime-symbols - 为rime输入法设计的中文转符号模块](https://github.com/fkxxyz/rime-symbols) ©️ 四叶草
@@ -55,11 +56,10 @@ cp *.yaml %APPDATA%\Rime # Windows
 - `luna_pinyin.(hanyu|extended).dict.yaml`: 明月拼音擴充詞庫 ©️ 瑾昀 <cokunhui@gmail.com>
   - 出自 https://github.com/rime-aca/dictionaries
 - `qqpyd/`: 从 [QQ输入法-词库平台](https://cdict.qq.pinyin.cn/) 下载的词库
+  - `qqpyd/url.lst`: 单纯包含了每行一个URL地址的下载链接
   - `qqpyd_output/`: 使用 [深蓝词库转换](https://github.com/studyzy/imewlconverter) 得到的可用于 Rime 的词库
-  - `qqpyd.dict.yaml`: 使用 `qqpyd/convert.sh` 获得的输出文件
+  - `qqpyd.dict.yaml`: 由 `gen-user-dict.sh` 读取 `qqpyd_output/` 后生成的输出文件
 - `sogoucel/`: 从 [搜狗细胞词库](https://pinyin.sogou.com/dict/) 下载的词库
   - `sogoucel_output/` 使用 [深蓝词库转换](https://github.com/studyzy/imewlconverter) 得到的可用于 Rime 的词库
-  - `sogoucel.dict.yaml`: 使用我写的脚本 `gen-user-dict.sh` 读取 `sogoucel_output/` 后生成的输出文件
-- `luna_pinyin.sogou.dict.yaml`: [Rime 朙月拼音方案的扩充搜狗词库](https://github.com/15cm/rime-sogou-dictionaries)
-  - 您需要手动下载此文件
+  - `sogoucel.dict.yaml`: 由 `gen-user-dict.sh` 读取 `sogoucel_output/` 后生成的输出文件
 - `sogou_dict_dl.py`: 对 [Sougou_dict_spider/main.py](https://github.com/StuPeter/Sougou_dict_spider/blob/c40f4fc94e9b7239a17c7679e329b6ba3b89c533/main.py#L18-L22) 修改了保存路径
