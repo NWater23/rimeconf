@@ -1,0 +1,7 @@
+patch:
+  switcher:
+    hotkeys:
+      # - "Control+grave" # 由於和 VSCode 鍵位衝突，禁用
+      - "Control+Alt+grave"
+      - "Alt+space"
+      # - "Control+space" # 給 Windows 用戶準備的

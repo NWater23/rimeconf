@@ -1,0 +1,14 @@
+---
+name: nwater
+version: "2024年 02月 13日 星期二 19:20:34 CST"
+sort: by_weight
+use_preset_vocabulary: true
+import_tables:
+  - luna_pinyin
+  - luna_pinyin.hanyu
+  - luna_pinyin.poetry
+  - luna_pinyin.cn_en
+  - luna_pinyin.extended
+  - sogoucel
+...
+

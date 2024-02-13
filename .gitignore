@@ -1,0 +1,15 @@
+imewlconverter/
+qqpyd/*
+!qqpyd/convert.sh
+sogoucel/*
+sogoucel_output/*
+*.tar.gz
+opencc/*.txt
+opencc/*.json
+build/
+*.userdb/
+installation.yaml
+user.yaml
+sync/
+*.dict.yaml
+!nwater.dict.yaml
