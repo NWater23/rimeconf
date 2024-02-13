@@ -109,8 +109,8 @@ patch:
   "speller/algebra/@before 0": xform/^([b-df-hj-np-tv-z])$/$1_/
 # --- ENDING CONTENT ---
   
-  # 載入词典，若您需要客製化词典，請修改此處
-  'translator/dictionary': luna_pinyin.extended
+  # 载入词典，若您有自定义词典的需求，请修改此处
+  'translator/dictionary': nwater
 
 # --- BEGINING CONTENT ---
   switches/@next:
