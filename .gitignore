@@ -1,8 +1,8 @@
 imewlconverter/
 qqpyd/*
-!qqpyd/convert.sh
+!qqpyd/url.lst
 sogoucel/*
-sogoucel_output/*
+*_output/*
 *.tar.gz
 opencc/*.txt
 opencc/*.json

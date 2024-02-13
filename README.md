@@ -35,6 +35,12 @@ make convert-sogoucel
 
 ```bash
 make build 
+
+cp *.yaml ~/.config/ibus/rime # Linux iBus
+cp *.yaml ~/.local/share/fcitx/rime # Linux Fcitx
+cp *.yaml ~/.local/share/fcitx5/rime # Linux Fcitx5
+cp *.yaml ~/Library/Rime # Mac OS
+cp *.yaml %APPDATA%\Rime # Windows
 ```
 
 ## Copyrights / Licensing
@@ -47,13 +53,13 @@ make build
   - 若您愿意，可以重新一次执行 `rime-symbols-gen` 然后将生成文件搬过去
 - `luna_pinyin(_simp)?.custom.yaml|opencc/emoji_((category|word).txt|.json)`: [Rime Emoji / 繪文字輸入方案](https://github.com/rime/rime-emoji) 多位贡献者 (LGPL-3.0)
 - `luna_pinyin.(hanyu|extended).dict.yaml`: 明月拼音擴充詞庫 ©️ 瑾昀 <cokunhui@gmail.com>
-  - 注：我未能找到该文件的原始出处
+  - 出自 https://github.com/rime-aca/dictionaries
 - `qqpyd/`: 从 [QQ输入法-词库平台](https://cdict.qq.pinyin.cn/) 下载的词库
-  - `qqpyd/output/`: 使用 [深蓝词库转换](https://github.com/studyzy/imewlconverter) 得到的可用于 Rime 的词库
-  - `qqpyd/convert.sh`: 在 Linux 下进行转换所需的指令
-  - `qcel.dict.yaml`: 使用 `qqpyd/convert.sh` 获得的输出文件
+  - `qqpyd_output/`: 使用 [深蓝词库转换](https://github.com/studyzy/imewlconverter) 得到的可用于 Rime 的词库
+  - `qqpyd.dict.yaml`: 使用 `qqpyd/convert.sh` 获得的输出文件
 - `sogoucel/`: 从 [搜狗细胞词库](https://pinyin.sogou.com/dict/) 下载的词库
-  - `sogoucel.dict.yaml`: 使用 `
+  - `sogoucel_output/` 使用 [深蓝词库转换](https://github.com/studyzy/imewlconverter) 得到的可用于 Rime 的词库
+  - `sogoucel.dict.yaml`: 使用我写的脚本 `gen-user-dict.sh` 读取 `sogoucel_output/` 后生成的输出文件
 - `luna_pinyin.sogou.dict.yaml`: [Rime 朙月拼音方案的扩充搜狗词库](https://github.com/15cm/rime-sogou-dictionaries)
   - 您需要手动下载此文件
 - `sogou_dict_dl.py`: 对 [Sougou_dict_spider/main.py](https://github.com/StuPeter/Sougou_dict_spider/blob/c40f4fc94e9b7239a17c7679e329b6ba3b89c533/main.py#L18-L22) 修改了保存路径

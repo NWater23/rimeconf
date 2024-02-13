@@ -11,7 +11,8 @@ imewlconverter/publish/ImeWlConverterCmd: imewlconverter_Linux.tar.gz
 	tar -zxvf imewlconverter_Linux.tar.gz -C imewlconverter --keep-newer-files
 
 # 下载和转换操作需要手动执行，因为无法让 GNU Makefile 自行检查是否已经完成下载和转换
-download: download-sogoucel
+
+download: download-sogoucel download-qqpyd
 
 download-sogoucel:
 	python sogou_dict_dl.py
@@ -19,10 +20,16 @@ download-sogoucel:
 convert-sogoucel: prepare
 	mkdir -p sogoucel_output
 	./imewlconverter/publish/ImeWlConverterCmd -i:scel "./sogoucel/*.scel" -o:rime "./sogoucel_output/*" -ct:pinyin -os:linux
-
-# 由于深蓝题库转换器是为 Windows 设计的，因此输出文件名的时候会多出一个反斜杠在文件名头部，不知道这个bug什么时候修复
-fix-convert-result:
 	rename -v '\' '' "sogoucel_output/"*".txt"
+
+download-qqpyd:
+	aria2c -i qqpyd/url.lst -d qqpyd
+
+convert-qqpyd: prepare
+	mkdir -p qqpyd_output
+	./imewlconverter/publish/ImeWlConverterCmd -i:qcel "./qqpyd/*.qcel" -o:rime "./qqpyd_output/*" -ct:pinyin -os:linux
+	rename -v '\' '' "qqpyd_output/"*".txt"
+# 由于深蓝题库转换器是为 Windows 设计的，因此输出文件名的时候会多出一个反斜杠在文件名头部，不知道这个bug什么时候修复
 
 rime-symbols: opencc/symbol_category.txt opencc/symbol.json opencc/symbol_word.txt
 opencc/symbol_category.txt opencc/symbol.json opencc/symbol_word.txt: rime-symbols/symbol_category.txt rime-symbols/symbol.json rime-symbols/symbol_word.txt
@@ -39,7 +46,10 @@ rime-aca: luna_pinyin.hanyu.dict.yaml luna_pinyin.cn_en.dict.yaml luna_pinyin.ex
 luna_pinyin.hanyu.dict.yaml luna_pinyin.cn_en.dict.yaml luna_pinyin.extended.dict.yaml luna_pinyin.poetry.dict.yaml: rime-aca-dict/luna_pinyin.dict/luna_pinyin.hanyu.dict.yaml rime-aca-dict/luna_pinyin.dict/luna_pinyin.cn_en.dict.yaml rime-aca-dict/luna_pinyin.dict/luna_pinyin.extended.dict.yaml rime-aca-dict/luna_pinyin.dict/luna_pinyin.poetry.dict.yaml
 	ln -t . -f $?
 
-convert: luna_pinyin.sogoucel.dict.yaml
+convert: sogoucel.dict.yaml qqpyd.dict.yaml
 
-luna_pinyin.sogoucel.dict.yaml:
+sogoucel.dict.yaml:
 	bash gen-user-dict.sh luna_pinyin.sogoucel.dict.yaml sogoucel_output
+
+qqpyd.dict.yaml:
+	bash gen-user-dict.sh qqpyd.sogoucel.dict.yaml qqpyd_output
