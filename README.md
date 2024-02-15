@@ -17,6 +17,8 @@ git submodule update
 
 ## 准备依赖环境
 
+你需要先安装有 Python, Rust, GNU Make, .Net Runtime Envirment.
+
 ```bash
 make prepare
 ```
@@ -58,8 +60,8 @@ cp *.yaml %APPDATA%\Rime # Windows
 - `qqpyd/`: 从 [QQ输入法-词库平台](https://cdict.qq.pinyin.cn/) 下载的词库
   - `qqpyd/url.lst`: 单纯包含了每行一个URL地址的下载链接
   - `qqpyd_output/`: 使用 [深蓝词库转换](https://github.com/studyzy/imewlconverter) 得到的可用于 Rime 的词库
-  - `qqpyd.dict.yaml`: 由 `gen-user-dict.sh` 读取 `qqpyd_output/` 后生成的输出文件
+  - `luna_pinyin_simp.qqpyd.dict.yaml`: 由 `gen-user-dict.sh` 读取 `qqpyd_output/` 后生成的输出文件
 - `sogoucel/`: 从 [搜狗细胞词库](https://pinyin.sogou.com/dict/) 下载的词库
-  - `sogoucel_output/` 使用 [深蓝词库转换](https://github.com/studyzy/imewlconverter) 得到的可用于 Rime 的词库
-  - `sogoucel.dict.yaml`: 由 `gen-user-dict.sh` 读取 `sogoucel_output/` 后生成的输出文件
+  - `sogoucel_output/` 使用 [Scel2Rime](https://github.com/bryan824/scel2rime) 得到的可用于 Rime 的词库
+  - `luna_pinyin_simp.sogoucel.dict.yaml`: 由 `gen-user-dict-scel.sh` 读取 `sogoucel_output/` 后生成的输出文件
 - `sogou_dict_dl.py`: 对 [Sougou_dict_spider/main.py](https://github.com/StuPeter/Sougou_dict_spider/blob/c40f4fc94e9b7239a17c7679e329b6ba3b89c533/main.py#L18-L22) 修改了保存路径

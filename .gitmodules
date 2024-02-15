@@ -10,3 +10,6 @@
 [submodule "Sougou_dict_spider"]
 	path = Sougou_dict_spider
 	url = https://github.com/StuPeter/Sougou_dict_spider
+[submodule "scel2rime"]
+	path = scel2rime
+	url = https://github.com/bryan824/scel2rime.git
