@@ -13,3 +13,4 @@ user.yaml
 sync/
 *.dict.yaml
 !nwater.dict.yaml
+*.zip

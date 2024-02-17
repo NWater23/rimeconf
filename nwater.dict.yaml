@@ -11,5 +11,7 @@ import_tables:
   - luna_pinyin.extended
   - luna_pinyin_simp.sogoucel
   - luna_pinyin_simp.qqpyd
+  - MoegirlMenuDictionary/moegirlMenu
+  - moegirl
 ...
 

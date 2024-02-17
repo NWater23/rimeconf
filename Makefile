@@ -1,5 +1,5 @@
 
-build: prepare rime-symbols rime-emoji rime-aca convert
+build: prepare rime-symbols rime-emoji rime-aca convert moegirl.dict.yaml
 
 prepare: imewlconverter/publish/ImeWlConverterCmd
 
@@ -61,3 +61,13 @@ luna_pinyin_simp.sogoucel.dict.yaml:
 
 luna_pinyin_simp.qqpyd.dict.yaml:
 	bash gen-user-dict.sh luna_pinyin_simp.qqpyd.dict.yaml qqpyd_output
+
+moegirl.dict.yaml:
+	wget "https://github.com/outloudvi/mw2fcitx/releases/latest/download/moegirl.dict.yaml"
+
+MoegirlMenuDictionary/moegirlMenu.dict.yaml: prepare MoeGirl_v3_20200823_Plus.zip
+	unzip -O cp936 MoeGirl_v3_20200823_Plus.zip "UserDefinedPhrase 萌百姓氏全字全拼去单字202005 v3 词频4.dat"
+	mv "UserDefinedPhrase 萌百姓氏全字全拼去单字202005 v3 词频4.dat" MoegirlMenuDictionary/moegirlMenu.dict.yaml
+
+MoeGirl_v3_20200823_Plus.zip:
+	wget "https://github.com/DiexMi/MoegirlMenuDictionary-For-Gboard-MSPinyinIME/releases/download/20200823_Plus/MoeGirl_v3_20200823_Plus.zip"

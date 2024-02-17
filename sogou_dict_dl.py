@@ -41,12 +41,6 @@ def main():
     print(myCategoryUrls)
     # 大类分类
     for index, categoryOneUrl in enumerate(myCategoryUrls):
-        # 创建保存路径
-        # categoryOnePath = SavePath + "/" + Categories[index].split(":")[-1]
-        # try:
-        #     os.mkdir(categoryOnePath)
-        # except Exception as e:
-        #     print(e)
         # 获取小类链接
         resp = SGSpider.GetHtml(categoryOneUrl)
         # 判断该链接是否为"城市信息",若是则采取Type1方法解析
@@ -55,42 +49,26 @@ def main():
         else:
             category2Type1Urls = SGSpider.GetCategory2Type2(resp)
         # 小类分类
-        # for key, url in category2Type1Urls.items():
-        map(getCategory2Dicts, (url for key, url in category2Type1Urls.items()))
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            executor.map(getCategory2Dicts, (url for key, url in category2Type1Urls.items()), chunksize=128)
-def getCategory2Dicts(url):
-    # 创建保存路径
-    # categoryTwoPath = categoryOnePath + "/" + key
-    # try:
-    #     os.mkdir(categoryTwoPath)
-    # except Exception as e:
-    #     print(e)
-    # 获取总页数
-    try:
-        resp = SGSpider.GetHtml(url)
-        pages = SGSpider.GetPage(resp)
-    except Exception as e:
-        print(e)
-        pages = 1
-    # 获取下载链接
-    for page in range(1, pages + 1):
-        pageUrl = url + "/default/" + str(page)
-        resp = SGSpider.GetHtml(pageUrl)
-        downloadUrls = SGSpider.GetDownloadList(resp)
-        # 开始下载
-        with open('url.lst', 'a') as f: f.writelines([urlDownload+'\n' for keyDownload, urlDownload in downloadUrls.items()])
-        cnt+=len(downloadUrls.items())
-        print(f'计数: {cnt}')
-        # for keyDownload, urlDownload in downloadUrls.items():
-        #     keyToDownload = '_'.join(re.split('&[A-Za-z0-9]+;|[~`!@#$%^&*()\[\]\{\},;|]', keyDownload))
-        #     filePath = categoryTwoPath + "/" + keyToDownload + ".scel"
-        #     if os.path.exists(filePath):
-        #         print(keyDownload + " 文件已存在>>>>>>")
-        #     else:
-        #         SGSpider.Download(urlDownload, filePath)
-        #         print(keyDownload + " 保存成功......")
-
+        for key, url in category2Type1Urls.items():
+            # 获取总页数
+            try:
+                resp = SGSpider.GetHtml(url)
+                pages = SGSpider.GetPage(resp)
+            except Exception as e:
+                print(e)
+                pages = 1
+            # 获取下载链接
+            for page in range(1, pages + 1):
+                pageUrl = url + "/default/" + str(page)
+                resp = SGSpider.GetHtml(pageUrl)
+                downloadUrls = SGSpider.GetDownloadList(resp)
+                # 开始下载
+                for keyDownload, urlDownload in downloadUrls.items():
+                    with open('url.lst', 'a') as f:
+                        f.writelines([
+                            f'{urlDownload}\n',
+                            f'\tout={keyDownload}.scel\n',
+                            ])
 
 if __name__ == '__main__':
     main()

@@ -65,3 +65,6 @@ cp *.yaml %APPDATA%\Rime # Windows
   - `sogoucel_output/` 使用 [Scel2Rime](https://github.com/bryan824/scel2rime) 得到的可用于 Rime 的词库
   - `luna_pinyin_simp.sogoucel.dict.yaml`: 由 `gen-user-dict-scel.sh` 读取 `sogoucel_output/` 后生成的输出文件
 - `sogou_dict_dl.py`: 对 [Sougou_dict_spider/main.py](https://github.com/StuPeter/Sougou_dict_spider/blob/c40f4fc94e9b7239a17c7679e329b6ba3b89c533/main.py#L18-L22) 修改了保存路径
+- `MoeGirl_v.*.zip`: [萌娘百科日本作品名与姓氏汉语全拼词库](https://github.com/DiexMi/MoegirlMenuDictionary-For-Gboard-MSPinyinIME)
+  - `MoegirlMenuDictionary/`： 使用 [深蓝词库转换](https://github.com/studyzy/imewlconverter) 得到的可用于 Rime 的词库
+- `moegirl.dict.yaml`: https://github.com/outloudvi/mw2fcitx
